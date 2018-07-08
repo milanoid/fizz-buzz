@@ -6,6 +6,7 @@ pipeline {
                 branch 'jenkins'
             }
             steps {
+                echo $BRANCH_NAME
                 echo 'Hello world, running on branch jenkinsfile!'
             }
         }
@@ -14,6 +15,7 @@ pipeline {
                 branch 'master'
             }
             steps {
+                echo $BRANCH_NAME
                 echo 'Hello world, running on branch master!'
             }
         }

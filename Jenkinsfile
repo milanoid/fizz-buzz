@@ -1,13 +1,16 @@
 pipeline {
     agent any
+    parameters {
+        string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
+    }
     stages {
         stage('Stage 1') {
             when {
                 branch 'jenkins'
             }
             steps {
-                echo env.BRANCH_NAME
-                echo 'Hello world, running on branch jenkinsfile!'
+                echo "Hello ${params.PERSON}"
+                echo 'Hello world, running on branch ${env.BRANCH_NAME}!'
             }
         }
         stage('Stage 2') {
@@ -15,8 +18,8 @@ pipeline {
                 branch 'master'
             }
             steps {
-                echo env.BRANCH_NAME
-                echo 'Hello world, running on branch master!'
+                echo "Hello ${params.PERSON}"
+                echo 'Hello world, running on branch ${env.BRANCH_NAME}!'
             }
         }
     }

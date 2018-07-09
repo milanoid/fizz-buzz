@@ -1,7 +1,7 @@
 pipeline {
     agent any
     triggers {
-        cron('* * * * *')
+        pollSCM('* * * * *') 
     }
     parameters {
         string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
@@ -13,7 +13,7 @@ pipeline {
             }
             steps {
                 echo "Hello ${params.PERSON}"
-                echo 'Hello world, running on branch ${env.BRANCH_NAME}!'
+                echo 'Hello world, running on branch env.BRANCH_NAME!'
             }
         }
         stage('Stage 2') {
@@ -22,7 +22,7 @@ pipeline {
             }
             steps {
                 echo "Hello ${params.PERSON}"
-                echo 'Hello world, running on branch ${env.BRANCH_NAME}!'
+                echo 'Hello world, running on branch env.BRANCH_NAME!'
             }
         }
     }
